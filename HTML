@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Civil Calculator Pro — Premium</title>
+
+<!-- External CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js" defer></script>
+
+<!-- External JS -->
+<script src="script.js" defer></script>
+
+<meta name="theme-color" content="#0d1424">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CivilCalc Pro">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20200%20200%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff7a2f%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ff9d5c%22/%3E%0A%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2240%22%20fill%3D%22%230d1424%22/%3E%0A%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2282%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ctext%20x%3D%22100%22%20y%3D%22140%22%20font-family%3D%22Georgia%2C%20serif%22%20font-size%3D%22120%22%20font-weight%3D%22700%22%20fill%3D%22%230d1424%22%20text-anchor%3D%22middle%22%3EC%3C/text%3E%0A%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20200%20200%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff7a2f%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ff9d5c%22/%3E%0A%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2240%22%20fill%3D%22%230d1424%22/%3E%0A%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2282%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ctext%20x%3D%22100%22%20y%3D%22140%22%20font-family%3D%22Georgia%2C%20serif%22%20font-size%3D%22120%22%20font-weight%3D%22700%22%20fill%3D%22%230d1424%22%20text-anchor%3D%22middle%22%3EC%3C/text%3E%0A%3C/svg%3E">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22Civil%20Calculator%20Pro%22%2C%20%22short_name%22%3A%20%22CivilCalc%20Pro%22%2C%20%22description%22%3A%20%2250%20site-ready%20civil%20engineering%20calculators%20for%20Tamil%20Nadu%20contractors%20%5Cu2014%20bilingual%2C%20offline-friendly%2C%20PDF%20reports.%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22background_color%22%3A%20%22%230d1424%22%2C%20%22theme_color%22%3A%20%22%230d1424%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage/svg%2Bxml%2C%253Csvg%2520xmlns%253D%2522http%253A//www.w3.org/2000/svg%2522%2520viewBox%253D%25220%25200%2520200%2520200%2522%253E%250A%253Cdefs%253E%253ClinearGradient%2520id%253D%2522g%2522%2520x1%253D%25220%2522%2520y1%253D%25220%2522%2520x2%253D%25221%2522%2520y2%253D%25221%2522%253E%250A%253Cstop%2520offset%253D%25220%2522%2520stop-color%253D%2522%2523ff7a2f%2522/%253E%253Cstop%2520offset%253D%25221%2522%2520stop-color%253D%2522%2523ff9d5c%2522/%253E%250A%253C/linearGradient%253E%253C/defs%253E%250A%253Crect%2520width%253D%2522200%2522%2520height%253D%2522200%2522%2520rx%253D%252240%2522%2520fill%253D%2522%25230d1424%2522/%253E%250A%253Ccircle%2520cx%253D%2522100%2522%2520cy%253D%2522100%2522%2520r%253D%252282%2522%2520fill%253D%2522url%2528%2523g%2529%2522/%253E%250A%253Ctext%2520x%253D%2522100%2522%2520y%253D%2522140%2522%2520font-family%253D%2522Georgia%252C%2520serif%2522%2520font-size%253D%2522120%2522%2520font-weight%253D%2522700%2522%2520fill%253D%2522%25230d1424%2522%2520text-anchor%253D%2522middle%2522%253EC%253C/text%253E%250A%253C/svg%253E%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image/svg%2Bxml%22%2C%20%22purpose%22%3A%20%22any%22%7D%2C%20%7B%22src%22%3A%20%22data%3Aimage/svg%2Bxml%2C%253Csvg%2520xmlns%253D%2522http%253A//www.w3.org/2000/svg%2522%2520viewBox%253D%25220%25200%2520200%2520200%2522%253E%250A%253Cdefs%253E%253ClinearGradient%2520id%253D%2522g%2522%2520x1%253D%25220%2522%2520y1%253D%25220%2522%2520x2%253D%25221%2522%2520y2%253D%25221%2522%253E%250A%253Cstop%2520offset%253D%25220%2522%2520stop-color%253D%2522%2523ff7a2f%2522/%253E%253Cstop%2520offset%253D%25221%2522%2520stop-color%253D%2522%2523ff9d5c%2522/%253E%250A%253C/linearGradient%253E%253C/defs%253E%250A%253Crect%2520width%253D%2522200%2522%2520height%253D%2522200%2522%2520rx%253D%252240%2522%2520fill%253D%2522%25230d1424%2522/%253E%250A%253Ccircle%2520cx%253D%2522100%2522%2520cy%253D%2522100%2522%2520r%253D%252282%2522%2520fill%253D%2522url%2528%2523g%2529%2522/%253E%250A%253Ctext%2520x%253D%2522100%2522%2520y%253D%2522140%2522%2520font-family%253D%2522Georgia%252C%2520serif%2522%2520font-size%253D%2522120%2522%2520font-weight%253D%2522700%2522%2520fill%253D%2522%25230d1424%2522%2520text-anchor%253D%2522middle%2522%253EC%253C/text%253E%250A%253C/svg%253E%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image/svg%2Bxml%22%2C%20%22purpose%22%3A%20%22any%22%7D%5D%7D">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-mark">C</div>
+    <div class="brand-text">
+      <h1>Civil Calculator Pro</h1>
+      <span>Premium Edition</span>
+    </div>
+  </div>
+  <div class="header-controls">
+    <div class="pill-btn" style="padding:4px;gap:0;display:flex;">
+      <button type="button" class="pill-btn active" id="langBtnEn" style="margin:0;border:none;">EN</button>
+      <button type="button" class="pill-btn" id="langBtnTa" style="margin:0;border:none;">தமிழ்</button>
+    </div>
+    <button type="button" class="pill-btn" id="blankTemplateBtn" onclick="downloadBlankTemplatePdf()">📝 Blank Template</button>
+    <button type="button" class="pill-btn" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+    <button type="button" class="pill-btn" id="settingsToggle" onclick="openSettings()">⚙️ Settings</button>
+    <button type="button" class="pill-btn" id="advisorToggle" onclick="openAdvisor()">🏗️ AI Advisor</button>
+    <button type="button" class="pill-btn" id="installBtn" onclick="installApp()" style="display:none;">📲 Install App</button>
+    <button type="button" class="pill-btn" id="historyToggle">🕘 History</button>
+  </div>
+</header>
+
+<div id="iosInstallTip" style="display:none;background:linear-gradient(135deg,#ff7a2f22,transparent);border-bottom:1px solid var(--line);padding:10px 20px;font-size:12.5px;color:var(--text-mid);align-items:center;justify-content:space-between;gap:10px;">
+  <span id="iosInstallTipText">📲 Use as an app on iPhone: tap Share → "Add to Home Screen".</span>
+  <button type="button" onclick="dismissIosTip()" style="background:none;border:none;color:var(--text-lo);cursor:pointer;font-size:16px;line-height:1;" aria-label="Close">✕</button>
+</div>
+
+<div class="shell">
+  <div class="hero">
+    <h2>Site-ready calculators, <span class="accent">zero guesswork.</span></h2>
+    <p id="heroSub">Concrete, cement-sand-aggregate, mix ratios and more — built for Tamil Nadu contractor workflows. More categories rolling out in phases.</p>
+  </div>
+
+  <div class="rail" id="categoryRail"></div>
+  <div class="calc-grid" id="calcGrid"></div>
+</div>
+
+<div class="overlay" id="calcOverlay">
+  <div class="panel" id="calcPanel"></div>
+</div>
+
+<div class="overlay" id="settingsOverlay">
+  <div class="panel">
+    <button type="button" class="panel-close" onclick="closeSettings()" aria-label="Close">✕</button>
+    <h3 id="settingsTitle">Settings</h3>
+
+    <div id="settingsBusinessLabel" style="font-size:11px;color:var(--text-lo);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 8px;">Business Info (for PDF branding)</div>
+    <div class="field">
+      <label id="lblBizName">Business / Your Name</label>
+      <input type="text" id="bizName" placeholder="e.g. Mukesh Civil Works">
+    </div>
+    <div class="field">
+      <label id="lblBizPhone">Phone</label>
+      <input type="text" id="bizPhone" placeholder="e.g. 98765 43210">
+    </div>
+    <div class="field">
+      <label id="lblBizAddr">Address / Area</label>
+      <input type="text" id="bizAddr" placeholder="e.g. Sivagangai, Tamil Nadu">
+    </div>
+    <div class="field">
+      <label id="lblBizGst">GST No. (optional)</label>
+      <input type="text" id="bizGst" placeholder="optional">
+    </div>
+
+    <div id="settingsRatesLabel" style="font-size:11px;color:var(--text-lo);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px;">Material Rates (₹, for auto cost estimate)</div>
+    <div class="field"><label>Cement (per bag)</label><input type="number" id="rateCement" placeholder="e.g. 400"></div>
+    <div class="field"><label>Sand (per cu.ft)</label><input type="number" id="rateSand" placeholder="e.g. 55"></div>
+    <div class="field"><label>Aggregate (per cu.ft)</label><input type="number" id="rateAgg" placeholder="e.g. 60"></div>
+    <div class="field"><label>Bricks (per nos)</label><input type="number" id="rateBrick" placeholder="e.g. 8"></div>
+    <div class="field"><label>AAC / Solid Block (per nos)</label><input type="number" id="rateBlock" placeholder="e.g. 55"></div>
+    <div class="field"><label>Steel (per kg)</label><input type="number" id="rateSteel" placeholder="e.g. 68"></div>
+    <div class="field"><label>Mason Labour (per day)</label><input type="number" id="rateMason" placeholder="e.g. 800"></div>
+    <div class="field"><label>Helper Labour (per day)</label><input type="number" id="rateHelper" placeholder="e.g. 500"></div>
+
+    <button type="button" class="calc-btn" onclick="saveSettings()" id="saveSettingsBtn">💾 Save Settings</button>
+    <div class="note" id="settingsNote">Saved only in this browser. Used to auto-estimate material cost and brand your PDF reports.</div>
+  </div>
+</div>
+
+<div class="overlay" id="advisorOverlay">
+  <div class="panel">
+    <button type="button" class="panel-close" onclick="closeAdvisor()" aria-label="Close">✕</button>
+    <h3 id="advisorTitle">AI Project Advisor</h3>
+    <div class="note" id="advisorSubtitle" style="margin-bottom:14px;">Describe your project — get a rough full material &amp; cost estimate combining multiple calculators.</div>
+
+    <div class="field">
+      <label id="lblProjType">Project Type</label>
+      <select id="advProjType">
+        <option value="House / Building" id="optHouse">House / Building</option>
+        <option value="Compound Wall" id="optWall">Compound Wall</option>
+        <option value="Shed / Godown" id="optShed">Shed / Godown</option>
+        <option value="Commercial Building" id="optCommercial">Commercial Building</option>
+        <option value="Renovation" id="optRenovation">Renovation</option>
+      </select>
+    </div>
+    <div class="field">
+      <label id="lblBuiltup">Built-up Area (sq.ft)</label>
+      <input type="number" id="advArea" placeholder="e.g. 1200">
+    </div>
+    <div class="field">
+      <label id="lblFloors">No. of Floors</label>
+      <input type="number" id="advFloors" placeholder="e.g. 2" value="1">
+    </div>
+    <div class="field">
+      <label id="lblQuality">Construction Quality</label>
+      <select id="advQuality">
+        <option value="Basic" id="optBasic">Basic</option>
+        <option value="Standard" selected id="optStandard">Standard</option>
+        <option value="Premium" id="optPremium">Premium</option>
+      </select>
+    </div>
+    <div class="field">
+      <label id="lblExtra">Additional Details (optional)</label>
+      <textarea id="advExtra" rows="3" style="width:100%;background:var(--bg2,#131c30);border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--text-hi);font-family:inherit;font-size:13px;" placeholder="e.g. RCC roof, 3 bedrooms, Sivagangai location..."></textarea>
+    </div>
+
+    <button type="button" class="calc-btn" onclick="getProjectEstimate()" id="advisorGoBtn">🏗️ Get Estimate</button>
+    <div class="ai-explain-box" id="advisorResultBox" style="display:none;"></div>
+    <div class="result-actions" id="advisorActions" style="display:none;margin-top:10px;">
+      <button type="button" class="ghost-btn" onclick="downloadAdvisorPdf()" id="advisorPdfBtn">📄 PDF</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="historyOverlay">
+  <div class="panel">
+    <button type="button" class="panel-close" onclick="closeHistory()" aria-label="Close">✕</button>
+    <h3 id="historyTitle">Calculation History</h3>
+    <div class="chart-box" id="historyChartBox" style="display:none;">
+      <div class="chart-title" id="historyChartTitle">Category Usage</div>
+      <canvas id="historyChart" height="180"></canvas>
+    </div>
+    <div class="history-list" id="historyList"></div>
+    <div class="result-actions">
+      <button type="button" class="ghost-btn" onclick="downloadFullReportPdf()" id="fullReportBtn">📊 Full Report PDF</button>
+      <button type="button" class="ghost-btn" onclick="exportHistoryJson()" id="exportHistoryBtn">⬇️ Export JSON</button>
+      <button type="button" class="ghost-btn" onclick="document.getElementById('importHistoryFile').click()" id="importHistoryBtn">⬆️ Import JSON</button>
+      <input type="file" id="importHistoryFile" accept="application/json" style="display:none;" onchange="importHistoryJson(event)">
+      <button type="button" class="ghost-btn" onclick="clearHistory()" id="clearHistoryBtn">Clear all</button>
+    </div>
+  </div>
+</div>
+
+<footer>Civil Calculator Pro · Built by Mukesh · <a href="https://mukesh-muk.github.io/Civil-Tech-Developer/" target="_blank">Live Project</a></footer>
+
+<button type="button" class="ai-fab" id="aiFab" title="AI Assistant">🤖</button>
+
+<div class="overlay" id="aiOverlay">
+  <div class="panel ai-panel">
+    <div class="ai-header">
+      <div>
+        <h3 id="aiTitle">AI Site Assistant</h3>
+        <div class="ai-sub" id="aiSubtitle">Powered by Gemini · Ask any civil engineering question</div>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <button type="button" class="ghost-btn" style="padding:6px 10px;font-size:10.5px;" id="changeKeyBtn" onclick="changeGeminiKey()">🔑 Change key</button>
+        <button type="button" class="panel-close" style="position:static;" onclick="closeAi()" aria-label="Close">✕</button>
+      </div>
+    </div>
+
+    <div class="ai-key-bar" id="aiKeyBar">
+      <div class="krow">
+        <input type="password" id="geminiKeyInput" placeholder="Paste your Gemini API key here">
+        <button type="button" class="calc-btn" style="width:auto;padding:0 16px;margin:0;" onclick="saveGeminiKey()">Save</button>
+      </div>
+      <div class="note" id="aiKeyNote">Unga key browser la mattum save aagum (localStorage), site la yarukkum theriyathu. Free key: <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a></div>
+    </div>
+
+    <div class="ai-messages" id="aiMessages">
+      <div class="ai-empty" id="aiEmptyNote">Concrete ratio, steel weight, site doubts — edhu வேணுமானாலும் kேளுங்க.</div>
+    </div>
+
+    <div class="ai-chip-row" id="aiChipRow">
+      <div class="ai-sugg-chip" onclick="askQuick(this)">M20 concrete ku ratio enna?</div>
+      <div class="ai-sugg-chip" onclick="askQuick(this)">100 sqft roof ku steel evolo?</div>
+      <div class="ai-sugg-chip" onclick="askQuick(this)">Curing evolo naal pannanum?</div>
+    </div>
+
+    <div class="ai-input-row">
+      <input type="text" id="aiInput" placeholder="Type your question..." onkeydown="if(event.key==='Enter')sendAiMessage();">
+      <button type="button" onclick="sendAiMessage()">➤</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
